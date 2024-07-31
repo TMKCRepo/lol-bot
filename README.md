@@ -1,3 +1,7 @@
+## THIS IS A FORK FROM https://github.com/iholston/lol-bot
+Update: This fork has been a bit modified. There was a error that when the bot finished and tried to honor someone, the bot would crash.
+This has been fixed and after testing it it SEEMS to work.
+
 <p align="center">
   <a href="https://github.com/iholston/lol-bot">
     <img src="https://github.com/iholston/lol-bot/assets/32341824/71f35164-c8a6-42ca-a254-68d8be92780e" alt="Logo">
@@ -24,7 +28,7 @@
 - Loop 🥡🧋
 
 ## Usage
-- Download the [latest release](https://github.com/iholston/lol-bot/releases)
+- Download the [latest release](https://github.com/TMKCRepo/lol-bot/releases)
 - Run LoLBot.exe 👍
 
 ## League Account Requirements
@@ -41,7 +45,7 @@ NOTE: The bot will automatically change your league settings/configuration and t
 - [League of Legends Account](https://signup.leagueoflegends.com/en-us/signup/index)  
 
 ## Development Setup
-Clone the repo or download the [latest release](https://github.com/iholston/lol-bot/releases)
+Clone the repo or download the [latest release](https://github.com/TMKCRepo/lol-bot/releases)
 ```sh
 pip install -r requirements.txt
 ```
