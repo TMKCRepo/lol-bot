@@ -285,7 +285,6 @@ class Client:
         sleep(3)
         try:
             utils.click(Client.POPUP_SEND_EMAIL_X_RATIO, utils.LEAGUE_CLIENT_WINNAME, 2)
-            self.honor_player()
             utils.click(Client.POPUP_SEND_EMAIL_X_RATIO, utils.LEAGUE_CLIENT_WINNAME, 2)
             for i in range(3):
                 utils.click(Client.POST_GAME_SELECT_CHAMP_RATIO, utils.LEAGUE_CLIENT_WINNAME, 1)
@@ -337,21 +336,6 @@ class Client:
             self.log.debug('Status Code: {}, Percent Patched: {}%'.format(r.status_code, r.json()['percentPatched']))
             self.log.debug(r.json())
         self.log.info("Client is up to date")
-
-    def honor_player(self) -> None:
-        """Honors a player in the post game lobby"""
-        for i in range(3):
-            r = self.connection.request('get', '/lol-honor-v2/v1/ballot')
-            if r.status_code == 200:
-                players = r.json()['eligiblePlayers']
-                index = random.randint(0, len(players)-1)
-                self.connection.request('post', '/lol-honor-v2/v1/honor-player', data={"summonerId": players[index]['summonerId']})
-                self.log.debug("Honor Success: Player {}. Champ: {}. Summoner: {}. ID: {}".format(index+1, players[index]['championName'], players[index]['summonerName'], players[index]['summonerId']))
-                sleep(2)
-                return
-            sleep(2)
-        self.log.warning('Honor Failure. Player -1, Champ: NULL. Summoner: NULL. ID: -1')
-        self.connection.request('post', '/lol-honor-v2/v1/honor-player', data={"summonerId": 0})  # will clear honor screen
 
     def chat(self, msg: str) -> None:
         """Sends a message to the chat window"""
